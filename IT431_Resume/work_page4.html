@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Work</title>
+<link href="regular_pages.css" rel="stylesheet" type="text/css">
+<script>
+//set up the clipart arrays using the names of files and their alt text
+var clipartImg;
+var forgePics = ["theforgeclipart-dragonsunmoonlogo", "theforgeclipart-anvilbot", "theforgeclipart-littlefire", "theforgeclipart-radiotv"];
+var forgeDesc = ["dragon in circle logo", "robot anvil", "little smiling fire", "tv radio displaying the forge"]
+
+//pick a random image and corresponding description, then modify img element in document body
+function pickImage()
+{
+    var forgeIndex = Math.floor(Math.random() * 4);
+    clipartImg.setAttribute("src", forgePics[forgeIndex] + ".png");
+    clipartImg.setAttribute("alt", forgeDesc[forgeIndex]);
+}
+
+//variable to hold the browser window 
+var child;
+function start()
+{
+//used to set up opening and closing The Forge website window
+    document.getElementById("openW").addEventListener("click", open_window, false);
+    document.getElementById("closeW").addEventListener("click", close_window, false);
+//registers clipartImg's click event handler
+    clipartImg = document.getElementById("forgeClipart");
+    clipartImg.addEventListener("click", pickImage, false);
+}
+// after the start function, the open_window function will react when the user clicks "Open The Forge"
+// same logic applies for close_window function when user clicks "Close The Forge"
+function open_window()
+{
+    child = window.open("https://forge.studentmedia.gmu.edu/", "", "menubar=yes, toolbar=yes, height=400, width=500");
+    document.getElementById("closeW");
+}
+function close_window()
+{
+    if (child.closed)
+        alert("The window has already been closed!");
+    else
+        child.close();
+}
+
+//when the mouse goes over the banner, a gif version plays
+function mOver(e)
+{
+    if (e.target.getAttribute("id") == "forgeHeader")
+    {
+        e.target.setAttribute("src", "theforgeheader-fantasticalplanet-withAnndragon.gif");
+    }
+}
+//when the mouse moves out of the banner, the banner turns back into its default png form
+function mOut(e)
+{
+    if (e.target.getAttribute("id") == "forgeHeader")
+    {
+        e.target.setAttribute("src", "theforgeheader-fantasticalplanet.png");
+    }
+}
+
+//event listener to make sure start() function reacts
+window.addEventListener("load", start, false);
+//event listener for when the mouse moves over and out of the header image
+document.addEventListener("mouseover", mOver, false);
+document.addEventListener("mouseout", mOut, false);
+
+</script>
+</head>
+
+<body>
+<div id="wrapper">
+
+<div id="banner">
+    <img alt="banner" src="banner.png" width="1300" height="100">
+</div>
+
+<div id="nav">
+    <ul>
+        <li><a href="home_page1.html">Home</a></li>
+        <li><a href="experience_page2.html">Experience</a></li>
+        <li><a href="gallery_page3.html">Gallery</a></li>
+        <li><a href="work_page4.html">Work</a></li>
+        <li><a href="tools_page5.html">Tools</a></li>
+        <li><a href="contact_page6.html">Contact Me</a></li>
+    </ul>
+</div>
+     
+<div id="content">
+    <h2>Work</h2>
+    <p>Since the start of 2025, I've gotten interested in marketing using my art and technical skills. I'm looking forward to creating artwork for organizations I'm a part of to freely use to promote their brand. I'll put examples of this work on this page as my journey continues.</p>
+
+    <form id="form1" name="form1">
+        <input type="button" name="openW" id="openW" value="Open The Forge">
+        <input type="button" name="closeW" id="closeW" value="Close The Forge"></form>
+    <img src = "theforgeheader-fantasticalplanet.png" width="965" height="147" alt = "Header for the website" id = "forgeHeader">
+    <div id="list">
+    <ul>
+        <li>During 2025, I've been part of a student-run organzation called The Forge that publishes sci-fi and fantasy magazines. The button above is a link to our official website. My favorite thing to do is creating clipart for them to use in social media posts. You can click the image below to see some examples! Other duties I have include improving the website design and collaborating with authors to bring their vision to life. The night sky banner below the buttons is a background I drew for the website, while a fellow member named Ann drew the flying dragon, hover over it for a surprise!
+        </li>
+    </ul>
+    </div>
+    <img id = "forgeClipart" src = "theforgeclipart-dragonsunmoonlogo.png" width="200" height="200" alt = "dragon in circle logo" class = "center">
+</div>
+
+<div id="footer">
+    <p>This website is developed as an educational project. Link to CSS style sheet <a href="regular_pages.css">here.</a></p>
+</div>
+
+</div>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+{
+	"tools": {
+		"tool": [
+			{
+				"name": "Medibang",
+				"explain": "Medibang is a free digital art program. I've used it for all my artworks since 2017.",
+				"link": "<ul><li><a href='https://medibangpaint.com/en/'>Link to Medibang's official website</a></li></ul>"
+			},
+			{
+				"name": "Gaomon Tablet",
+				"explain": "I use a Gaomon pen tablet to make it easier to draw on my computer.",
+				"link": "<ul><li><a href='https://gaomon.net/?'>Link to Gaomon's official website</a></li></ul>"
+			},
+			{
+				"name": "Unsplash",
+				"explain": "While not used in any of the examples I provided, I occasionally use public domain images as textures for my art or when I need to make a website. Unsplash is a good example.",
+				"link": "<ul><li><a href='https://unsplash.com/'>Link to Unsplash's official website</a></li></ul>"
+			},
+			{
+				"name": "Capcut",
+				"explain": "Capcut is a free video editing program. It's very simple and easy to use, as well as offerring free assets. I personally avoid the AI features.",
+				"link": "<ul><li><a href='https://www.capcut.com/'>Link to Capcut's official website</a></li></ul>"
+			},
+			{
+				"name": "Mixkit",
+				"explain": "Like Unsplash, I occasionally use their free assets for video projects (also not shown in any of the examples I provided).",
+				"link": "<ul><li><a href='https://mixkit.co/'>Link to Mixkit's official website</a></li></ul>"
+			},
+			{
+				"name": "Visual Studio Code",
+				"explain": "The free alternative to Dreamweaver that I use for web development. It doesn't have as much features, but it does the job well.",
+				"link": "<ul><li><a href='https://code.visualstudio.com/'>Link to Visual Studio Code's official website</a></li></ul>"
+			}
+		]
+	}
+}

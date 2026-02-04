@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Contact Me</title>
+<link href="regular_pages.css" rel="stylesheet" type="text/css">
+<link href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.21.0/jquery.validate.js"></script>
+<script>
+    $(document).ready(function () {
+    //autocomplete code for "What are you contacting me for?"
+        var reasonList = ["Business", "Personal", "Other"];
+        $('#reason').autocomplete({
+            source: reasonList,
+            delay: 100, //specify how long the autocorrect takes to respond to the input
+            minLength: 2, //specify when the autocorrect responds to the input
+            autoFocus: true
+        });
+    });  // end ready
+</script>
+</head>
+
+<body>
+<div id="wrapper">
+
+<div id="banner">
+    <img alt="banner" src="banner.png" width="1300" height="100">
+</div>
+                
+<div id="nav">
+    <ul>
+        <li><a href="home_page1.html">Home</a></li>
+        <li><a href="experience_page2.html">Experience</a></li>
+        <li><a href="gallery_page3.html">Gallery</a></li>
+        <li><a href="work_page4.html">Work</a></li>
+        <li><a href="tools_page5.html">Tools</a></li>
+        <li><a href="contact_page6.html">Contact Me</a></li>
+    </ul>
+</div>
+                     
+<div id="contentform">
+    <h2>Contact Me</h2>
+    <p>My email is xxx@xmail.com and my phone number is ###-###-####. But there is a form below if you'd like to contact me directly, I'd like to hear your thoughts!</p>
+<div id="myForm">
+    <form id="form" method = "get" autocomplete = "on">
+        <fieldset><legend>About You</legend>
+        <p><label for = "today"> Today is:
+            <input class = "inputText" type="date" id="today" name="today" min="2025-01-01" max="2050-12-31">
+        </label></p>
+
+        <p><label>Your Name:
+            <input class = "inputText" type = "text" id = "name" name="name"> </label></p>
+
+        <p><label>Your E-Mail Address:
+            <input class = "inputText" type = "email" id = "email" name="email"> </label></p>
+
+        <p><label> Who are you?
+            <select class = "menuSelect" name = "rating">
+                <option selected>- Choose One -</option>
+                <option value = "Student">Student</option>
+                <option value = "Teacher">Teacher</option>
+                <option value = "Employer">Employer</option>
+                <option value = "Client">Client</option>
+                <option value = "Other">Other</option>
+            </select>
+        </label></p>
+
+        <p><label for = "reason"> What are you contacting me for? Specify if it's for business, personal, or other.</label>
+            <div class="ui-widget">
+                <input id= "reason">
+            </div>
+            
+        </fieldset>
+        <fieldset><legend>Feedback</legend>
+
+        <p>How did you find this site?</p>
+        <input type="checkbox" id="web" name="web" value="web">
+        <label for="web"> The url</label><br>
+        <input type="checkbox" id="recommended" name="recommended" value="recommended">
+        <label for="recommended"> Word of mouth</label><br>
+        <input type="checkbox" id="chance" name="chance" value="chance">
+        <label for="chance"> Search engine</label><br>
+
+        <p>Did you like my website?</p>
+        <input name = "mailing" type = "radio"
+            value = "yes"><label> Liked it</label><br>
+        <input name = "mailing" type = "radio"
+            value = "middle"><label> Neutral</label><br>
+        <input name = "mailing" type = "radio"
+            value = "no"><label> Not my style</label><br>
+        <p><label>Any comments?<br></label>
+            <textarea class = "inputText" name = "comments"
+                rows = "7" cols = "90">
+            </textarea>
+        </p>
+        </fieldset>
+            <div><input class = "inputButton" type = "submit" value = "Submit">
+            <input class = "inputButton" type = "reset" value = "Reset">
+            </div>
+    </form>
+</div>
+</div>
+
+
+<div id="footer">
+    <p>This website is developed as an educational project. Link to CSS style sheet <a href="regular_pages.css">here.</a></p>
+</div>
+                
+</div>
+
+<script>
+$("#form").validate({
+	rules: {
+		name: {
+			required: true,
+		},
+        email: {
+			required: true,
+            email: true
+		},
+        today: {
+			required: true
+		}
+    },
+    messages: {
+		name: {
+			required: " Please enter your name",
+		},
+        email: {
+			required: " Please enter an email address",
+            email: " Please enter a valid email address"
+		},
+        today: {
+			required: " Please choose a date"
+		}
+	}
+});
+</script>
+</body>
+
+</html>

@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Homepage</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link href="bootstrap_pages.css" rel="stylesheet" type="text/css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+
+//if there is no name, user will be prompted to enter one. the name will get stored locally.
+function getName()
+{
+//takes user's name from local storage here
+    let storeName = localStorage.getItem("name");
+    if (!storeName) {
+        let lowstoreName = prompt("Enter your name:");
+        //prompt reacts if the user presses cancel or nothing
+            if (lowstoreName == null)
+                alert("You clicked cancel. Refresh the page to retry.");
+            if (lowstoreName == "")
+                alert("You did not enter a name. Click 'Reset Name' to retry.");
+        //capitalizes the first letter of the name
+        storeName = lowstoreName.charAt(0).toUpperCase() + lowstoreName.slice(1);
+    }
+    //displays welcome greeting with the name on the page
+    if (storeName){
+        localStorage.setItem("name", storeName);
+        var welColor = document.getElementById('welName');
+        welColor.innerHTML = "Welcome " + storeName +"!";
+    }
+}
+
+function changeColor()
+{
+    let nameColor = localStorage.getItem("color");
+    if (!nameColor) {
+        var inputColor=prompt("Enter a color name", "");
+            //prompt reacts if the user presses cancel or nothing
+            if (inputColor == null)
+                alert("You clicked cancel, defaults to black.");
+            if (inputColor == "")
+                alert("You did not enter a color, defaults to black.");
+        nameColor = inputColor;
+    }
+    
+    if (nameColor){
+        localStorage.setItem("color", nameColor);
+        var para=document.getElementById("welName");
+        para.setAttribute("style", "color:" + nameColor);
+    }
+}
+
+//clear local storage
+function resetStor()
+{
+    localStorage.clear();
+    location.reload();
+}
+
+// the first half of function start() includes the variable holding the last modified date and displays it on the page
+function start()
+{
+    var dateObject = new Date(document.lastModified);
+    document.getElementById("timeDate").innerHTML = "<p>Last Modified: " + dateObject + "</p";
+    //triggers getName() and changeColor() function and sets up the reset button
+    getName();
+    changeColor();
+    var resetButton = document.getElementById("resetName");
+    resetButton.addEventListener("click", resetStor, false);
+}
+
+//event listener to make sure start() function reacts
+window.addEventListener("load", start, false);
+
+
+</script>
+
+<script>
+//fade out image effect when clicked (jQuery effect)
+  $(document).ready(function() {
+    $('img').click(function() { 
+               $(this).each(function() {  
+               $(this).fadeOut('slow'); // fadeout effect
+               $(this).fadeTo(1000, 0.5) //opacity
+               });
+         });  
+}); // end ready
+</script>
+
+</head>
+
+<body>
+<div class="container">
+<div class="row">
+
+<div class="col-md-12 offset-0">
+   <div id="banner">
+   	  <img alt="banner" src="banner.png" class="img-fluid">
+   </div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-2 offset-0"> 
+       <div id="nav">
+          <ul>
+            <li><a href="home_page1.html">Home</a></li>
+            <li><a href="experience_page2.html">Experience</a></li>
+            <li><a href="gallery_page3.html">Gallery</a></li>
+            <li><a href="work_page4.html">Work</a></li>
+            <li><a href="tools_page5.html">Tools</a></li>
+            <li><a href="contact_page6.html">Contact Me</a></li>
+          </ul>
+       </div>
+    </div>
+
+<div class="col-md-10">    
+    <div id="content">
+
+        <h3 id="welName">Welcome!</h3><h3><img class="right" src="homepic.png" alt="Stylized portrait" width="180" height="230"></h3>
+        <button id="resetName">Reset Name</button>
+
+        <p>My name is Lorien Espino. I made this website, and I hope you enjoy looking around!</p>
+        <div id="list">
+            <ul>
+                <li><a href="#who">Who am I?</a></li>
+                <li><a href="#what">What is this website for?</a></li>
+                <li><a href="#plans">Plans for the future</a></li>
+                <li><a href="#disclaimer">Disclaimer statement</a></li>
+            </ul>
+        </div>
+        <h3 id="who">Who am I?</h3>
+        <p>I'm an Information Technology student with an interest in the world wide web. My career goal is to be a steady full-stack Web Developer with UI/UX design experience.</p>
+        <p>Other than that, I'm an life-long artist who likes playing games and listening to a variety of music. I love being creative, especially when it comes to digital drawing. Making websites is a skill I'm hoping to master. I've used technology all my life, so I'm excited about all the new websites I can create or learn about.</p>
+        <h3 id="what">What is this website for?</h3>
+        <p>This website was made for educational purposes, but I wanted it to make it personalized. I created all the art used for making this website look appealing, which I found really fun to do. It also gave me a chance to showcase my art in a way I haven't done before. While IT is mostly technical, I like how there is also a way you can be creative. This is actually the first semi-complicated website I created, so I wanted to see the most I can do as a beginner.</p>
+        <h3 id="plans">Plans for the future</h3>
+        <p>I plan on improving on this website as I continue to gain more technical skills. It was a great step for my future career goal. Anything I create is special to me in it's own way, so I'd love to see this website grow with me. I do admit that I appreciate how this website looks currently, since I have a fondness for older internet aesthetics. Growing up, the websites I used looked similar to this and it brings a smile to my face! I'm finally understanding how they were made.</p>
+        <h3 id="disclaimer">Disclaimer statement</h3>
+        <p>This website is developed as an educational project. If any copyrighted materials are included in accordance to the multimedia fair use guidelines, a notice should be added and states that “certain materials are included under the fair use exemption of the U.S. Copyright Law and have been prepared according to the multimedia fair use guidelines and are restricted from further use.”</p>
+        <div id = "timeDate"></div>
+    </div>
+</div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-12 offset-0"> 
+       <div id="footer">
+            <p>This website is developed as an educational project. Link to CSS style sheet <a href="bootstrap_pages.css" class="link-light">here.</a></p>
+       </div>
+    </div>
+    </div>  
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+
+</html>

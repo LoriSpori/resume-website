@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Experience</title>
+<link href="regular_pages.css" rel="stylesheet" type="text/css">
+<script>
+var interval = null; //keeps track of interval
+var speed = 5; //animation speed
+var count = 0; //size of image during the animation
+
+// called repeatedly to animate bear image
+function run()
+{
+    count += speed;
+    //stop count at this image size
+    if (count >= 200)
+    {
+        window.clearInterval(interval);
+        interval = null;
+    }
+
+    var bigImage = document.getElementById("bigBear");
+    bigImage.setAttribute("style", "width: " + (1.4 * count + "px;") +
+        "height: " + (count + "px;"));
+}
+
+//begins the growing animation
+function display(imgfile)
+{
+    if (interval)
+        return;
+
+    var bigImage = document.getElementById("bigBear");
+    bigImage.setAttribute("style", "width: 100px; height: 71px;");
+    count = 0;
+    interval = window.setInterval("run()", 10);
+}
+
+//register event handler
+function start()
+{
+    document.getElementById("bigBear").addEventListener(
+        "click", function() {display("strongbear.png");}, false);
+}
+
+//event listener to make sure start() function reacts
+window.addEventListener("load", start, false);
+</script>
+</head>
+
+<body>
+<div id="wrapper">
+
+<div id="banner">
+    <img alt="banner" src="banner.png" width="1300" height="100">
+</div>
+        
+<div id="nav">
+    <ul>
+        <li><a href="home_page1.html">Home</a></li>
+        <li><a href="experience_page2.html">Experience</a></li>
+        <li><a href="gallery_page3.html">Gallery</a></li>
+        <li><a href="work_page4.html">Work</a></li>
+        <li><a href="tools_page5.html">Tools</a></li>
+        <li><a href="contact_page6.html">Contact Me</a></li>
+    </ul>
+</div>
+             
+<div id="content">
+    <h2>Experience</h2>
+    <p>This page documents skills and experience I've acquired over the years. Click on the bear to watch her get stronger as she builds experience!</p>
+    
+    <img src="strongbear.png" id="bigBear" width="100" height="71" alt="Strong bear">
+
+    <h2>Education</h2>
+    <p>I am an Information Technology Major concentrating on web application development. I have an Associate of Science degree from Northern Virginia Community College (NOVA) and graduated as Magna Cum Laude with a 3.7 GPA. I'm currently pursuing a Bachelor of Science in George Mason University (GMU).</p>
+
+    <h2>Technical Skills</h2>
+    <div id="list">
+        <ul>
+            <li>Applications:
+                <ul>
+                    <li>Microsoft Suite (Word, Excel, PowerPoint), Google Suite, Cisco Packet Tracer, Wireshark, WordPress, Visual Studio Code, and Oracle VirtualBox. On the creative side, I've used Canva, Photoshop, and Medibang.</li>
+                </ul>
+            </li>
+            <li>Databases:
+                <ul>
+                    <li>MySQL, Oracle</li>
+                </ul>
+            </li>
+            <li>Programming:
+                <ul>
+                    <li>Python, JavaScript</li>
+                </ul>
+            </li>
+            <li>Operating Systems:
+                <ul>
+                    <li>Windows OS, Linux (Ubuntu, Kali)</li>
+                </ul>
+            </li>
+        </ul>
+
+    <h2>IT Projects</h2>
+    <p>When I first transferred to NOVA from MASON in 2024, I did a trade study.</p>
+    <ul>
+        <li>I conducted a trade study comparing graphics tablets, developed a 6-page report with tables in
+            Microsoft Word for clear visualization. I researched the market and did in-depth analysis on customer reception, pressure sensitivity,
+            and measurements of the tablets to determine the best technical solution.</li>
+    </ul>
+    <p>I have worked on an MySQL Database group project at NOVA 2024.</p>
+    <ul>
+        <li>I created a database in MySQL with a team of 6 students at NOVA 2024. I also led that team on the creation of a professional presentation using Google Slides to show the
+            results of our group project.</li>
+    </ul>
+    <p>This website is an example of a web development project I did at GMU 2025.</p>
+    <ul>
+        <li>I constructed a multi-page website using HTML, CSS, JavaScript, and file navigation.
+            I used my artistic knowledge and created an appealing website design to engage the user.</li>
+    </ul>
+    <p>At NOVA 2023, I created a Networking Concepts Proposal.</p>
+    <ul>
+        <li>The presentation was for a secure network design connecting a satellite campus to a
+            main campus using draw.io. I researched equipment used for the design for three floors.</li>
+    </ul>
+
+    <h2>Work Experience</h2>
+    <p>National Art Honor Society at Park View High School</p>
+    <ul>
+        <li>Showed up to all meetings, worked with team and teacher sponsor to spread the joy of art around the school and local festivals</li>
+    </ul>
+    <p>Front Desk Agent at Best Western 2023</p>
+    <ul>
+        <li>Experience with Opera database to check in and out around 100 guests per day, five financial
+            transactions on average</li>
+        <li>Customer service representative, attending to the needs of guests, collaborating with one to two
+            colleagues during peak periods with heavy workload</li>
+    </ul>
+    <p>Winter Internship with Operating Systems Fundamentals professor 2024</p>
+    <ul>
+        <li>Worked remotely to conduct a report each week with recommendations on improving the Textbook questions</li>
+    </ul>
+    <p>Illustrator and Marketing Member at The Forge (GMU Student Media) in 2025-current</p>
+    <ul>
+        <li>Coordinate appealing branding with a team of up to 10 members, duties include: illustrating key art
+            for social media, improving website design, collaborating with writers to bring their vision to life</li>
+    </ul>
+    <p>Web Design Intern at Woodard Walker Associates, Inc. in 2025-current</p>
+    <ul>
+        <li>Designed the company website using WordPress, hands-on experience with installing security and marketing plugins, connected the website to Google Analytics and Google Search Console, 
+            daily cloud backups and continuous updates to ensure functionality, enhancing website performance and SEO, AI Integration for assistance when necessary
+</li>
+    </ul>
+
+    <h2>Awards</h2>
+        <ul>
+            <li>High School:
+                <ul>
+                    <li>Academic Honor Roll, Principal's Club</li>
+                </ul>
+            </li>
+            <li>NOVA
+                <ul>
+                    <li>Dean's List</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+        
+<div id="footer">
+    <p>This website is developed as an educational project. Link to CSS style sheet <a href="regular_pages.css">here.</a></p>
+</div>
+        
+</div>
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta charset="utf-8">
+<title>Tools</title>
+<link href="regular_pages.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css">
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js "></script>
+
+<script>
+//register event handler
+function start()
+{
+  document.getElementById("insert").addEventListener("click",insertNode,false);
+}
+
+//inserts text before the list
+function insertNode()
+{
+  var newNode = document.createElement("p");
+
+  var newText = document.createTextNode("They're free and can still do the job just as well with the right techniques!");
+  newNode.appendChild( newText );
+
+  var currentNode = document.getElementById("content1");
+
+  //insert before:
+  currentNode.parentNode.insertBefore( newNode, currentNode );
+}
+
+//event listener to make sure start() function reacts
+window.addEventListener("load",start,false);
+
+//register event handler
+function register()
+{
+  document.getElementById("ansPlan").addEventListener("click", function (){retrieveAns("toolsAns.txt");}, false);
+}
+
+//raw ajax
+function retrieveAns(url)
+{
+    var request = new XMLHttpRequest(); 
+    request.addEventListener("readystatechange", function (){ //track state changes and when its ready
+        if (request.readyState==4 && request.status==200)
+        {
+            document.getElementById("answer").innerHTML = request.responseText; //update HTML to show toolsAns.txt
+        }
+    }, false);
+    request.open('GET', url, true);
+    request.send(null);
+}
+
+//event listener to make sure register() function reacts
+window.addEventListener("load", register, false);
+
+</script>
+
+</head>
+
+<body>
+<div id="wrapper">
+
+<div id="banner">
+    <img alt="banner" src="banner.png" width="1300" height="100">
+</div>
+        
+<div id="nav">
+    <ul>
+        <li><a href="home_page1.html">Home</a></li>
+        <li><a href="experience_page2.html">Experience</a></li>
+        <li><a href="gallery_page3.html">Gallery</a></li>
+        <li><a href="work_page4.html">Work</a></li>
+        <li><a href="tools_page5.html">Tools</a></li>
+        <li><a href="contact_page6.html">Contact Me</a></li>
+    </ul>
+</div>
+             
+<div id="content">
+    <h2>Tools</h2>
+    <p>I listed all the tools I frequently use for creations below.</p>
+
+    <input type="button" name="ansPlan" id="ansPlan" value="Do I have plans to upgrade my tools?">
+    <input type="button" name="insert" id="insert" value="Why keep using free programs over paid ones?">
+
+    <p id="answer"></p>
+
+
+<!-- database table -->				        
+<div id="content1"></div>
+<h3>Click on a name from the table to receive the link.</h3>
+<div id="Tool_Info"></div>
+
+    <h2>Art Citations</h2>
+    <ul>
+        <li>Stylized portrait, Lorien E, February 16 2025, created with Medibang, No Outside Distribution</li>
+        <li>Website banner, Lorien E, February 16 2025, created with Medibang, No Outside Distribution</li>
+        <li>Purple heart, Lorien E, February 16 2025, created with Medibang, No Outside Distribution</li>
+        <li>Blue heart, Lorien E, February 16 2025, created with Medibang, No Outside Distribution</li>
+        <li>Strong purple bear, Lorien E, April 1 2025, created with Medibang, No Outside Distribution</li>
+        <li>Thumbnail for my animated music video, Lorien E, February 12 2024, created with Medibang, No Outside Distribution</li>
+        <li>Wishing On Stardom frames, Lorien E, March 28 2025, created with Medibang, No Outside Distribution</li>
+        <li>Art of two men in the park, Lorien E, December 13 2024, created with Medibang, No Outside Distribution</li>
+        <li>The Forge vampire story painting, Lorien E, April 6 2025, created with Medibang, Internal Use Only</li>
+        <li>Art of a fantasy group camping, Lorien E, April 7 2025, created with Medibang, No Outside Distribution</li>
+        <li>The Forge underwater story painting, Lorien E, November 21 2025, created with Medibang, Internal Use Only</li>
+        <li>Stickamation: The Movie poster artwork, Lorien E, December 22 2023, created with Medibang, No Outside Distribution</li>
+        <li>Art of two women carolling, Lorien E, December 16 2024, created with Medibang, No Outside Distribution</li>
+        <li>Dragon in circle logo, Lorien E, March 9 2025, created with Medibang, Internal Use Only</li>
+        <li>Robot anvil, Lorien E, March 9 2025, created with Medibang, Internal Use Only</li>
+        <li>Little smiling fire, Lorien E, March 9 2025, created with Medibang, Internal Use Only</li>
+        <li>TV radio displaying The Forge, Lorien E, March 9 2025, created with Medibang, Internal Use Only</li>
+        <li>Night sky background banner, Lorien E, March 16 2025, created with Medibang, Internal Use Only</li>
+        <li>Night sky background banner with flying dragon animation, Lorien E and Ann R, March 16 2025, created with Medibang, Internal Use Only</li>
+    </ul>
+</div>
+
+<div id="footer">
+    <p>This website is developed as an educational project. Link to CSS style sheet <a href="regular_pages.css">here.</a></p>
+</div>
+        
+</div>
+
+
+<script>
+<!--
+//jQuery DataTable
+$(document).ready(function () {
+    $.ajax({
+        type: "GET",
+        url: "tools.json", //link page to tools.json file
+        dataType: "json",
+        success: function (data) {
+            var table = $('<table id="tools" class="display"><thead><tr><th>Name</th><th>Description</th></tr></thead><tbody></tbody></table>');
+            $.each(data.tools.tool, function (index, tool) {
+                var name = tool.name;
+                var explain = tool.explain;
+                var description = tool.link;
+                var row = $('<tr data-description="' + description + '"><td>' + name + '</td><td>' + explain + '</td></tr>');
+                table.find('tbody').append(row);
+            });
+            $('#content1').html(table);
+            var dataTable = $('#tools').DataTable();
+            
+            //insert link into Tool_Info
+            $('#tools tbody').on('click', 'tr', function () {
+                var description = $(this).data('description');
+                $('#Tool_Info').html(description);
+            });
+        }
+    });
+});
+-->
+</script>
+
+
+</body>
+
+</html>
